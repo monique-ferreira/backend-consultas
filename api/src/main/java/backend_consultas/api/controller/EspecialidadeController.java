@@ -5,7 +5,7 @@ import backend_consultas.api.service.EspecialidadeService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
-@RequestMapping
+@RequestMapping("/especialidades")
 @CrossOrigin
 
 public class EspecialidadeController {
