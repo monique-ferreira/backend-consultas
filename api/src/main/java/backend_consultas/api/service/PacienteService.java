@@ -16,7 +16,7 @@ public class PacienteService {
     public List<Paciente> listar() {
         return repository.findAll();
     }
-    public Paciente getById() {
+    public Paciente getById(Paciente paciente) {
         return repository.getById();
     }
 }
