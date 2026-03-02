@@ -10,17 +10,29 @@ public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String telefone;
     @Column(nullable = false)
     private String nome;
     private String email;
+    @Column(nullable = false, unique = true)
     private String cpf;
+    @Column(nullable = false)
+    private String telefone;
     private LocalDate dataNascimento;
     private Boolean ativo;
 
     public Paciente() {}
-    public Paciente(String nome) {
+    public Paciente(String nome,
+                    String cpf,
+                    String email,
+                    String telefone,
+                    LocalDate dataNascmento,
+                    Boolean ativo) {
         this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.telefone = telefone;
+        this.dataNascimento = dataNascmento;
+        this.ativo = ativo;
     }
 
     public Long getId() { return id; }
