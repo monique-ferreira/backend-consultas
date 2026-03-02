@@ -24,9 +24,10 @@ public class PacienteController {
         return service.listar();
     }
 
-    @GetMapping
-    public Paciente getById(@RequestBody Paciente paciente) {
-        return service.getById(paciente);
+    @GetMapping("/{id}")
+    public Paciente getById(@PathVariable Long id) {
+        Paciente p = new Paciente();
+        p.setId(id);
+        return service.getById(p);
     }
-
 }

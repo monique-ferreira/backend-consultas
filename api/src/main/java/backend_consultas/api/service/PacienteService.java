@@ -3,6 +3,9 @@ import backend_consultas.api.model.Paciente;
 import backend_consultas.api.repository.PacienteRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 @Service
 
 public class PacienteService {
@@ -17,6 +20,6 @@ public class PacienteService {
         return repository.findAll();
     }
     public Paciente getById(Paciente paciente) {
-        return repository.getById();
+        return repository.getById(paciente.getId());
     }
 }
