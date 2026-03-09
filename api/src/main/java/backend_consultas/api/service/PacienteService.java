@@ -22,4 +22,18 @@ public class PacienteService {
         return repository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado"));
     }
+    public Paciente atualizar(Long id, Paciente pacienteAtualizado) {
+        Paciente pacienteExistente = buscarPorId(id);
+        pacienteExistente.setNome(pacienteAtualizado.getNome());
+        pacienteExistente.setCpf(pacienteAtualizado.getCpf());
+        pacienteExistente.setEmail(pacienteAtualizado.getEmail());
+        pacienteExistente.setTelefone(pacienteAtualizado.getTelefone());
+        pacienteExistente.setDataNascimento(pacienteAtualizado.getDataNascimento());
+        pacienteExistente.setAtivo(pacienteAtualizado.getAtivo());
+        return repository.save(pacienteExistente);
+    }
+    public void deletar(Long id) {
+        Paciente paciente = buscarPorId(id);
+        repository.delete(paciente);
+    }
 }
