@@ -1,5 +1,6 @@
 package backend_consultas.api.controller;
 import backend_consultas.api.model.Especialidade;
+import backend_consultas.api.model.Paciente;
 import backend_consultas.api.repository.EspecialidadeRepository;
 import backend_consultas.api.service.EspecialidadeService;
 import org.springframework.web.bind.annotation.*;
@@ -20,5 +21,9 @@ public class EspecialidadeController {
     @GetMapping
     public List<Especialidade> listar() {
         return service.listar();
+    }
+    @GetMapping("/{id}")
+    public Especialidade buscarPorId(@PathVariable Long id) {
+        return service.buscarPorId(id);
     }
 }
