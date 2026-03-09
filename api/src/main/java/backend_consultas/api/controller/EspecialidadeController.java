@@ -32,7 +32,7 @@ public class EspecialidadeController {
         return  service.atualizar(id, especialidade);
     }
 
-    @DeleteMapping("/{id")
+    @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id) {
         service.deletar(id);
     }
