@@ -7,4 +7,6 @@ import java.util.Optional;
 public interface MedicoRepository extends JpaRepository<Medico, Long> {
     Optional<Medico> findByCrm(String crm);
     List<Medico> findByEspecialidadeId(Long especialidadeId);
+    boolean existsByCrm(String crm);
+    boolean existsByCrmAndIdNot(String crm, Long id);
 }
