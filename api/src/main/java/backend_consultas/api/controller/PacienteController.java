@@ -1,15 +1,12 @@
 package backend_consultas.api.controller;
-
 import backend_consultas.api.model.Paciente;
 import backend_consultas.api.service.PacienteService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/pacientes")
 @CrossOrigin
-
 public class PacienteController {
     private final PacienteService service;
     public PacienteController(PacienteService service) {
@@ -23,17 +20,18 @@ public class PacienteController {
     public List<Paciente> listar() {
         return service.listar();
     }
-
     @GetMapping("/{id}")
     public Paciente buscarPorId(@PathVariable Long id) {
         return service.buscarPorId(id);
     }
-
+    @GetMapping("/cpf/{cpf}")
+    public Paciente buscarPorCpf(@PathVariable String cpf) {
+        return service.buscarPorCpf(cpf);
+    }
     @PutMapping("/{id}")
     public Paciente atualizar(@PathVariable Long id, @RequestBody Paciente paciente) {
         return service.atualizar(id, paciente);
     }
-
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id) {
         service.deletar(id);

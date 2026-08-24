@@ -22,6 +22,10 @@ public class PacienteService {
         return repository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado"));
     }
+    public Paciente buscarPorCpf(String cpf) {
+        return repository.findByCpf(cpf)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado"));
+    }
     public Paciente atualizar(Long id, Paciente pacienteAtualizado) {
         Paciente pacienteExistente = buscarPorId(id);
         pacienteExistente.setNome(pacienteAtualizado.getNome());

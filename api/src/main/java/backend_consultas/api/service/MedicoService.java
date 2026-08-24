@@ -3,8 +3,8 @@ import backend_consultas.api.model.Medico;
 import backend_consultas.api.repository.MedicoRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
-@Service
 
+@Service
 public class MedicoService {
     private final MedicoRepository repository;
     public MedicoService(MedicoRepository repository) {
@@ -15,6 +15,12 @@ public class MedicoService {
     }
     public Medico buscarPorId(Long id) {
         return repository.findById(id).orElseThrow(() -> new RuntimeException("Médico não encontrado"));
+    }
+    public Medico buscarPorCrm(String crm) {
+        return repository.findByCrm(crm).orElseThrow(() -> new RuntimeException("Médico não encontrado"));
+    }
+    public List<Medico> listarPorEspecialidade(Long especialidadeId) {
+        return repository.findByEspecialidadeId(especialidadeId);
     }
     public Medico salvar(Medico medico) {
         return repository.save(medico);

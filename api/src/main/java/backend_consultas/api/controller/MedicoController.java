@@ -3,10 +3,10 @@ import backend_consultas.api.model.Medico;
 import backend_consultas.api.service.MedicoService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+
 @RestController
 @RequestMapping("/medicos")
 @CrossOrigin
-
 public class MedicoController {
     private final MedicoService service;
     public MedicoController(MedicoService service) {
@@ -19,6 +19,14 @@ public class MedicoController {
     @GetMapping("/{id}")
     public Medico buscarPorId(@PathVariable Long id) {
         return service.buscarPorId(id);
+    }
+    @GetMapping("/crm/{crm}")
+    public Medico buscarPorCrm(@PathVariable String crm) {
+        return service.buscarPorCrm(crm);
+    }
+    @GetMapping("/especialidade/{especialidadeId}")
+    public List<Medico> listarPorEspecialidade(@PathVariable Long especialidadeId) {
+        return service.listarPorEspecialidade(especialidadeId);
     }
     @PostMapping
     public Medico salvar(@RequestBody Medico medico) {
