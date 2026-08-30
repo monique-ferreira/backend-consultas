@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import backend_consultas.api.model.Consulta;
@@ -13,14 +14,8 @@ import backend_consultas.api.repository.ConsultaRepository;
 import backend_consultas.api.repository.MedicoRepository;
 import backend_consultas.api.repository.PacienteRepository;
 
-/**
- * DataLoader: executado automaticamente ao iniciar o backend.
- *
- * O método run() só insere dados de exemplo se a tabela de consultas
- * estiver vazia (count == 0), então é seguro reiniciar o servidor
- * sem duplicar dados.
- */
 @Component
+@Order(10)
 public class DataLoader implements CommandLineRunner {
 
     private final ConsultaRepository consultaRepository;
@@ -37,7 +32,6 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Só popula se ainda não houver consultas cadastradas
         if (consultaRepository.count() > 0) {
             System.out.println("DataLoader: consultas já existem, pulando seed.");
             return;
